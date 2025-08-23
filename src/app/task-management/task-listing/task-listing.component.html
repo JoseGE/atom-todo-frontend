@@ -1,0 +1,64 @@
+<mat-toolbar color="primary" class="task-listing__toolbar">
+  <span class="task-listing__title">Mis Tareas</span>
+  <span class="spacer"></span>
+  <button mat-icon-button (click)="onLogout()" matTooltip="Cerrar sesión">
+    <mat-icon>logout</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="task-listing__container">
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="task-listing__loading">
+    <mat-spinner diameter="40"></mat-spinner>
+    <p>Cargando tareas...</p>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error" class="task-listing__error">
+    <mat-icon class="task-listing__error-icon">error</mat-icon>
+    <p>{{ error }}</p>
+    <button mat-raised-button color="primary" (click)="loadTasks()">
+      Reintentar
+    </button>
+  </div>
+
+  <!-- Content -->
+  <div *ngIf="!isLoading && !error" class="task-listing__content">
+    <!-- Header with Create Button -->
+    <div class="task-listing__header">
+      <h2>Lista de Tareas</h2>
+      <button
+        mat-fab
+        color="primary"
+        (click)="onCreateNewTask()"
+        matTooltip="Crear nueva tarea"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+
+    <!-- Empty State -->
+    @if(!tasks().length) {
+    <div class="task-listing__empty">
+      <mat-icon class="task-listing__empty-icon">assignment</mat-icon>
+      <h3>No tienes tareas</h3>
+      <p>¡Crea tu primera tarea para comenzar!</p>
+      <button mat-raised-button color="primary" (click)="onCreateNewTask()">
+        Crear Tarea
+      </button>
+    </div>
+    }
+
+    <div *ngIf="tasks().length > 0" class="task-listing__sections">
+      @if(pendingTasks.length > 0) {
+      <app-task-pending-listing
+        [tasks]="pendingTasks"
+      ></app-task-pending-listing>
+      } @if(completedTasks.length > 0) {
+      <app-task-complete-listing
+        [tasks]="completedTasks"
+      ></app-task-complete-listing>
+      }
+    </div>
+  </div>
+</div>

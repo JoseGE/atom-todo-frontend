@@ -1,0 +1,14 @@
+<div class="section">
+  <h3 class="section-title">
+    <mat-icon>schedule</mat-icon>
+    Pendientes ({{ tasks.length }})
+  </h3>
+
+  <div class="cards">
+    <app-task-item
+      *ngFor="let task of tasks; trackBy: trackByTaskId"
+      [task]="task"
+      (markTaskAsComplete)="onMarkTaskAsComplete(task)"
+    ></app-task-item>
+  </div>
+</div>

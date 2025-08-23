@@ -19,7 +19,6 @@ import { AuthenticationService } from '../auth.service';
 import { UserRegistrationPromptComponent } from '../user-registration-prompt/user-registration-prompt.component';
 
 @Component({
-  selector: 'app-login-page',
   standalone: true,
   imports: [
     CommonModule,
@@ -30,8 +29,8 @@ import { UserRegistrationPromptComponent } from '../user-registration-prompt/use
     MatButtonModule,
     MatSnackBarModule,
   ],
-  templateUrl: './login.page.html',
-  styleUrl: './login.page.scss',
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.scss',
 })
 export class LoginPageComponent {
   private readonly fb = inject(FormBuilder);
@@ -60,7 +59,7 @@ export class LoginPageComponent {
             this.promptUserRegistration(credentials.email);
             return;
           }
-          this.router.navigate(['/task-management']);
+          this.router.navigate(['/tasks']);
         },
         error: () => {
           this.snackBar.open('Error de autenticación', 'Cerrar', {

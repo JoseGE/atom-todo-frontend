@@ -1,0 +1,115 @@
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.card {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+  &--pending {
+    border-left: 4px solid #2196f3;
+  }
+
+  &--completed {
+    border-left: 4px solid #4caf50;
+    opacity: 0.8;
+
+    .task-listing__card-title h4 {
+      text-decoration: line-through;
+      color: rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  &-header {
+    padding-bottom: 8px;
+  }
+
+  &-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+
+    h4 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 500;
+      flex: 1;
+      word-wrap: break-word;
+      line-height: 1.4;
+    }
+  }
+
+  &-actions {
+    display: flex;
+    gap: 4px;
+    border: none;
+    padding: 0;
+    margin: 0 0 0 8px;
+
+    legend {
+      display: none; // Ocultar visualmente pero mantener para screen readers
+    }
+
+    .card-action-btn {
+      transition: all 0.2s ease;
+
+      &:focus {
+        outline: 2px solid #2196f3;
+        outline-offset: 2px;
+        background-color: rgba(33, 150, 243, 0.1);
+      }
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.04);
+        transform: scale(1.05);
+      }
+
+      &--danger:focus {
+        outline-color: #f44336;
+        background-color: rgba(244, 67, 54, 0.1);
+      }
+
+      &--danger:hover {
+        background-color: rgba(244, 67, 54, 0.04);
+      }
+    }
+
+    button {
+      mat-icon {
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+
+  &-content {
+    padding-top: 0;
+
+    p {
+      margin: 0;
+      color: rgba(0, 0, 0, 0.7);
+      line-height: 1.5;
+      word-wrap: break-word;
+    }
+  }
+
+  &-footer {
+    padding: 8px 16px;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    background-color: rgba(0, 0, 0, 0.02);
+
+    small {
+      color: rgba(0, 0, 0, 0.5);
+      font-size: 12px;
+    }
+  }
+}

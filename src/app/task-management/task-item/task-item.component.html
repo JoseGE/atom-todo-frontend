@@ -1,0 +1,83 @@
+<mat-card
+  class="card"
+  [ngClass]="{
+    'card--completed': task.completed,
+    'card--pending': !task.completed
+  }"
+  [attr.aria-label]="
+    'Tarea: ' +
+    task.title +
+    '. Estado: ' +
+    (task.completed ? 'completada' : 'pendiente')
+  "
+  tabindex="0"
+>
+  <mat-card-header class="card-header">
+    <div class="card-title">
+      <h4
+        [id]="'task-title-' + task.id"
+        [attr.aria-describedby]="
+          task.description ? 'task-description-' + task.id : null
+        "
+      >
+        {{ task.title }}
+      </h4>
+      <fieldset
+        class="card-actions"
+        [attr.aria-labelledby]="'task-title-' + task.id"
+      >
+        <legend class="sr-only">Acciones para la tarea {{ task.title }}</legend>
+        @if(!task.completed) {
+        <button
+          mat-icon-button
+          (click)="onMarkTaskAsComplete(task)"
+          aria-label="Marcar como completada"
+          matTooltip="Marcar como completada"
+          [attr.aria-describedby]="'task-title-' + task.id"
+          class="card-action-btn"
+        >
+          <mat-icon [attr.aria-hidden]="true">check_circle</mat-icon>
+        </button>
+        } @else {
+        <button
+          mat-icon-button
+          (click)="onMarkTaskAsPending(task)"
+          aria-label="Marcar como pendiente"
+          matTooltip="Marcar como pendiente"
+          [attr.aria-describedby]="'task-title-' + task.id"
+          class="card-action-btn"
+        >
+          <mat-icon [attr.aria-hidden]="true">undo</mat-icon>
+        </button>
+        }
+        <button
+          mat-icon-button
+          (click)="(task)"
+          matTooltip="Eliminar tarea"
+          [attr.aria-label]="'Eliminar tarea: ' + task.title"
+          [attr.aria-describedby]="'task-title-' + task.id"
+          color="warn"
+          class="card-action-btn card-action-btn--danger"
+        >
+          <mat-icon [attr.aria-hidden]="true">delete</mat-icon>
+        </button>
+      </fieldset>
+    </div>
+  </mat-card-header>
+
+  <mat-card-content *ngIf="task.description" class="card-content">
+    <p
+      [id]="'task-description-' + task.id"
+      [attr.aria-label]="'Descripción de la tarea'"
+    >
+      {{ task.description }}
+    </p>
+  </mat-card-content>
+
+  <mat-card-footer class="card-footer">
+    <small [attr.aria-label]="'Fecha de creación de la tarea'">
+      Creada:
+      {{ task.createdAt | date : "dd MMMM yyyy HH:mm" }}
+    </small>
+  </mat-card-footer>
+</mat-card>

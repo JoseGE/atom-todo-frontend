@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
-import { Observable, tap, throwError } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
+import { environment } from '../../environments/environment';
 import { IUserAccessValidator } from '../shared-infra/acces-control/user-access.interface';
 import {
   AuthenticationResponse,
@@ -13,7 +14,7 @@ import {
   providedIn: 'root',
 })
 export class AuthenticationService implements IUserAccessValidator {
-  private readonly apiUrl = 'https://api-4uh3bp7aoq-uc.a.run.app';
+  private readonly apiUrl = environment.apiUrl;
   private readonly tokenKey = 'auth_token';
 
   private readonly authenticatedUser = signal<UserProfile | null>(null);
@@ -29,6 +30,10 @@ export class AuthenticationService implements IUserAccessValidator {
 
   getUserSessionToken(): string | null {
     return sessionStorage.getItem(this.tokenKey);
+  }
+
+  clearUserSession(): void {
+    this.terminateSession();
   }
 
   getAuthenticatedUser() {
