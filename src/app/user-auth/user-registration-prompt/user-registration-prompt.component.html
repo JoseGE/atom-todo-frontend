@@ -1,0 +1,32 @@
+<div class="registration-prompt">
+  <div class="registration-prompt__header">
+    <mat-icon>person_add</mat-icon>
+    <h2 mat-dialog-title>Crear Nueva Cuenta</h2>
+  </div>
+
+  <div mat-dialog-content>
+    <p class="registration-prompt__question">
+      ¿Deseas crear una nueva cuenta con el email
+      <strong>{{ data.email }}</strong
+      >?
+    </p>
+  </div>
+
+  <div mat-dialog-actions>
+    <button
+      mat-button
+      (click)="onCancelRegistration()"
+      class="registration-prompt__cancel-btn"
+    >
+      Cancelar
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="onConfirmRegistration()"
+      class="registration-prompt__confirm-btn"
+    >
+      Crear Cuenta
+    </button>
+  </div>
+</div>

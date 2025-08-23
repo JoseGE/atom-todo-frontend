@@ -40,7 +40,7 @@
         "@typescript-eslint/indent": ["error", 2],
         "@typescript-eslint/comma-dangle": "off",
         "@typescript-eslint/lines-between-class-members": "off",
-        "@typescript-eslint/quotes": ["error", "double"],
+        "@typescript-eslint/quotes": ["error", "single"],
         "@typescript-eslint/no-shadow": "error",
         "@typescript-eslint/no-explicit-any": 0,
         // ANGUAR ESLINT
