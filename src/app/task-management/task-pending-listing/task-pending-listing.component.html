@@ -9,6 +9,8 @@
       *ngFor="let task of tasks; trackBy: trackByTaskId"
       [task]="task"
       (markTaskAsComplete)="onMarkTaskAsComplete(task)"
+      (taskDelete)="onTaskDelete(task)"
+      (taskEdit)="onTaskEdit(task)"
     ></app-task-item>
   </div>
 </div>

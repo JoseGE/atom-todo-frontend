@@ -27,6 +27,7 @@ export class TaskItemComponent {
   @Output() markTaskAsComplete = new EventEmitter<Task>();
   @Output() markTaskAsPending = new EventEmitter<Task>();
   @Output() taskDelete = new EventEmitter<Task>();
+  @Output() taskEdit = new EventEmitter<Task>();
 
   onMarkTaskAsComplete(task: Task): void {
     this.markTaskAsComplete.emit(task);
@@ -38,5 +39,9 @@ export class TaskItemComponent {
 
   onTaskDelete(task: Task): void {
     this.taskDelete.emit(task);
+  }
+
+  onTaskEdit(task: Task): void {
+    this.taskEdit.emit(task);
   }
 }

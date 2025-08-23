@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -9,9 +10,9 @@ import { Router } from '@angular/router';
 import { catchError, of } from 'rxjs';
 
 import { TaskCompleteListingComponent } from '../task-complete-listing/task-complete-listing.component';
-import { Task } from '../task-management.models';
 import { TaskManagementService } from '../task-management.service';
 import { TaskPendingListingComponent } from '../task-pending-listing/task-pending-listing.component';
+import { TaskUpsertDialogComponent } from '../task-upsert-dialog/task-upsert-dialog.component';
 
 @Component({
   selector: 'app-task-listing',
@@ -32,6 +33,7 @@ import { TaskPendingListingComponent } from '../task-pending-listing/task-pendin
 export class TaskListingComponent implements OnInit {
   private readonly taskService = inject(TaskManagementService);
   private readonly router = inject(Router);
+  private readonly dialog = inject(MatDialog);
 
   isLoading = false;
   error: string | null = null;
@@ -62,24 +64,10 @@ export class TaskListingComponent implements OnInit {
   }
 
   onCreateNewTask(): void {
-    this.router.navigate(['/tasks/create']);
-  }
-
-  onTaskComplete(task: Task): void {
-    // Funcionalidad pendiente: marcar tarea como completada/pendiente
-  }
-
-  onTaskEdit(task: Task): void {
-    this.router.navigate(['/tasks/edit', task.id]);
-  }
-
-  onTaskDelete(task: Task): void {
-    const shouldDelete = window.confirm(
-      `¿Estás seguro de eliminar la tarea "${task.title}"?`
-    );
-    if (shouldDelete) {
-      // Funcionalidad pendiente: eliminar tarea del servicio
-    }
+    this.dialog.open(TaskUpsertDialogComponent, {
+      width: '70dvw',
+      disableClose: true,
+    });
   }
 
   onLogout(): void {

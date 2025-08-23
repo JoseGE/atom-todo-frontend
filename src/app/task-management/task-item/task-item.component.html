@@ -52,7 +52,17 @@
         }
         <button
           mat-icon-button
-          (click)="(task)"
+          (click)="onTaskEdit(task)"
+          matTooltip="Editar tarea"
+          [attr.aria-label]="'Editar tarea: ' + task.title"
+          [attr.aria-describedby]="'task-title-' + task.id"
+          class="card-action-btn"
+        >
+          <mat-icon [attr.aria-hidden]="true">edit</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          (click)="onTaskDelete(task)"
           matTooltip="Eliminar tarea"
           [attr.aria-label]="'Eliminar tarea: ' + task.title"
           [attr.aria-describedby]="'task-title-' + task.id"
