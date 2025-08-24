@@ -94,9 +94,10 @@ import { Task } from '../task-management.models';
         display: block;
       }
       .task-form-card {
-        max-width: 560px;
         margin: 24px auto;
         padding: 16px 20px;
+        border: none;
+        box-shadow: none;
       }
       .full-width {
         width: 100%;

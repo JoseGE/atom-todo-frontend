@@ -117,17 +117,3 @@ $atom-challenge-fe-template-theme: mat.define-light-theme(
 @include mat.all-component-themes($atom-challenge-fe-template-theme);
 
 /* You can add global styles to this file, and also import other style files */
-
-// Design tokens (app level)
-$app-spacing-xs: 4px;
-$app-spacing-sm: 8px;
-$app-spacing-md: 12px;
-$app-spacing-lg: 16px;
-$app-spacing-xl: 24px;
-$app-radius-sm: 4px;
-$app-radius-md: 8px;
-$app-radius-lg: 10px;
-$app-elevation-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-$app-elevation-md: 0 4px 8px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.35);
-
-// (Removed other token categories per request; only spacing/radius/elevation retained)

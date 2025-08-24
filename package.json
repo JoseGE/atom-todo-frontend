@@ -1,5 +1,5 @@
 {
-  "name": "atom-fe-challenge-template-ng-17",
+  "name": "atom-todo-front",
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
