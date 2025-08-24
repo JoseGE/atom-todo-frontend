@@ -1,15 +1,30 @@
-# ATOM FE CHALLENGE TEMPLATE - ANGULAR
-
-Este proyecto es una plantilla con lo necesario para comenzar a desarrollar el front-end de la aplicación de la prueba técnica de Atom. Se base en Angular con la versión 17.3.6.
-Se ha realizado la instalación y configuración de varias dependencias necesarias para el desarrollo de la aplicación, como por ejemplo: Angular Material.
-
-## Instrucciones
-Siéntete libre de clonar este repositorio y utilizarlo como base para el desarrollo de la aplicación. Sigue las indicates de la prueba técnica para completar la aplicación y desarrolla como más te sientas cómodo.
-
-De igual manera puedes documentar dentro de este archivo todo lo que deseas contar sobre tu desarrollo, como por ejemplo, decisiones de diseño, problemas encontrados, etc.
+# ATOM FE CHALLENGE - ANGULAR
 
 ## Comentarios sobre el desarrollo
-...
+
+### Informacion funcional
+
+Aplicativo util para el registro y gestion de tareas de forma simple y facil.
+
+Funcionalidades logradas:
+
+1. Autenticacion
+
+- Uso de JWT
+- Registro de nuevo correo
+
+2. Registro y edición de tarea
+3. Listado de tareas
+4. Cambio de estatus de tareas
+5. Eliminacion de tareas
+
+### Decisión de estructura
+
+Se opto por screaming architecture para tener una estructura que permita entender directamente que hace cada componente en vez de especificar lo que es. Ademas al igual que en el backend se sigue el vertial slicing para agrupar de forma optima las funcionalidades segun su "dominio", en este caso tenemos 'task-management' y 'user-auth'
+
+### Posible ruptura de desacoplamiento
+
+El enfoque principal fue evitar todo lo posible la dependencia entre features. Por un momento con el guard e interceptor podria requerir acoplar 'user-auth' al shared para el uso del servicio de autenticacion. Creo que con la implementacion de una interfaz y la creacion del TOKEN de injeccion fue una buena decision para evitar acoplar user-auth a shared directamente.
 
 ## Development server
 
@@ -26,10 +41,6 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
 ## Further help
 
