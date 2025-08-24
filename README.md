@@ -1,5 +1,7 @@
 # ATOM FE CHALLENGE - ANGULAR
 
+## Autor: Jose Escoboso
+
 ## Comentarios sobre el desarrollo
 
 ### Informacion funcional
