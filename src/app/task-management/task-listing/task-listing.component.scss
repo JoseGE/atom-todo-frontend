@@ -1,20 +1,22 @@
+@use "../../../assets/styles/theme.scss" as *;
+
 .task-listing {
   &__toolbar {
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: $app-elevation-sm;
   }
 
   &__title {
-    font-size: 20px;
+    font-size: 20px; // could map to typographic scale variable
     font-weight: 500;
   }
 
   &__container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 24px 16px;
+    padding: $app-spacing-xl $app-spacing-lg;
   }
 
   &__loading,
@@ -46,7 +48,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 32px;
+    margin-bottom: $app-spacing-xl * 2;
 
     h2 {
       margin: 0;
@@ -81,14 +83,14 @@
   &__sections {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: $app-spacing-xl * 2;
   }
 
   &__section {
     &-title {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: $app-spacing-sm;
       margin: 0 0 16px 0;
       padding: 0 8px;
       color: rgba(0, 0, 0, 0.7);
@@ -106,7 +108,7 @@
   &__cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 16px;
+    gap: $app-spacing-lg;
   }
 }
 
@@ -118,7 +120,7 @@
 @media (max-width: 768px) {
   .task-listing {
     &__container {
-      padding: 16px 12px;
+      padding: $app-spacing-md $app-spacing-sm;
     }
 
     &__header {
@@ -133,7 +135,7 @@
 
     &__cards {
       grid-template-columns: 1fr;
-      gap: 12px;
+      gap: $app-spacing-md;
     }
 
     &__card {
@@ -158,7 +160,7 @@
 @media (max-width: 480px) {
   .task-listing {
     &__container {
-      padding: 12px 8px;
+      padding: $app-spacing-md $app-spacing-sm;
     }
 
     &__section-title {

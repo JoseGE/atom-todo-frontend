@@ -1,16 +1,18 @@
+@use "../../../assets/styles/theme.scss" as *;
+
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 16px;
+  gap: $app-spacing-lg;
 }
 .section {
   &-title {
     display: flex;
     align-items: center;
-    gap: 8px;
-    margin: 0 0 16px 0;
-    padding: 0 8px;
-    color: rgba(0, 0, 0, 0.7);
+    gap: $app-spacing-sm;
+    margin: 0 0 $app-spacing-lg 0;
+    padding: 0 $app-spacing-sm;
+    color: rgba(0, 0, 0, 0.6);
     font-size: 18px;
     font-weight: 500;
 
@@ -24,6 +26,6 @@
 @media (max-width: 768px) {
   .cards {
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: $app-spacing-md;
   }
 }
